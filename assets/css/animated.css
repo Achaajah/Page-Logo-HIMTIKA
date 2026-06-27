@@ -1,0 +1,156 @@
+/* Start Live News */
+@keyframes marquee {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(-100%, 0); }
+}
+/* End Live News */
+
+@keyframes gearAnimation {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+}
+/* Keyframes tambahan */
+@keyframes fadeOutUp {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(-60px) translateY(-30px); /* kiri + ke atas */
+  }
+}
+
+/* ================= ANIMATIONS ================= */
+
+/* Keyframes */
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeOutLeft {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(-60px);
+  }
+}
+
+@keyframes fadeOutRight {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(60px);
+  }
+}
+
+/* Default state (sebelum animasi) */
+.hero-left,
+.hero-right {
+  opacity: 0;
+}
+
+/* Kelas saat visible (fade IN) */
+.hero-left.animate-in {
+  animation: fadeInLeft 0.8s ease forwards;
+}
+
+.hero-right.animate-in {
+  animation: fadeInRight 0.8s ease 0.2s forwards; /* delay 0.2s biar berurutan */
+}
+
+/* Kelas saat tidak visible (fade OUT) */
+.hero-left.animate-out {
+  animation: fadeOutLeft 0.6s ease forwards;
+}
+
+.hero-right.animate-out {
+  animation: fadeOutRight 0.6s ease forwards;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .hero-left,
+  .hero-right {
+    opacity: 1;
+    animation: none !important;
+  }
+}
+
+
+@keyframes fadeOutDown {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(-60px) translateY(30px); /* kiri + ke bawah */
+  }
+}
+
+/* Untuk hero-right (arah kanan) */
+.hero-right.animate-out-up {
+  animation: fadeOutRightUp 0.6s ease forwards;
+}
+
+.hero-right.animate-out-down {
+  animation: fadeOutRightDown 0.6s ease forwards;
+}
+
+@keyframes fadeOutRightUp {
+  from { opacity: 1; transform: translateX(0); }
+  to   { opacity: 0; transform: translateX(60px) translateY(-30px); }
+}
+
+@keyframes fadeOutRightDown {
+  from { opacity: 1; transform: translateX(0); }
+  to   { opacity: 0; transform: translateX(60px) translateY(30px); }
+}
+
+/* Untuk hero-left (arah kiri) */
+.hero-left.animate-out-up {
+  animation: fadeOutLeftUp 0.6s ease forwards;
+}
+
+.hero-left.animate-out-down {
+  animation: fadeOutLeftDown 0.6s ease forwards;
+}
+
+@keyframes fadeOutLeftUp {
+  from { opacity: 1; transform: translateX(0); }
+  to   { opacity: 0; transform: translateX(-60px) translateY(-30px); }
+}
+
+@keyframes fadeOutLeftDown {
+  from { opacity: 1; transform: translateX(0); }
+  to   { opacity: 0; transform: translateX(-60px) translateY(30px); }
+}
