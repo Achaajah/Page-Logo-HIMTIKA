@@ -360,11 +360,12 @@
 
 })();
 const heroLeft  = document.querySelector('.hero-left');
-  const heroRight = document.querySelector('.hero-right');
-  const elements  = [heroLeft, heroRight];
+const heroRight = document.querySelector('.hero-right');
+const elements  = [heroLeft, heroRight];
 
-  let lastScrollY = window.scrollY;
+let lastScrollY = window.scrollY;
 
+if (window.innerWidth > 768) {
   const observer = new IntersectionObserver(
     (entries) => {
       const currentScrollY = window.scrollY;
@@ -375,18 +376,14 @@ const heroLeft  = document.querySelector('.hero-left');
         const el = entry.target;
 
         if (entry.isIntersecting) {
-          // Masuk viewport
           el.classList.remove('animate-out-down', 'animate-out-up');
           el.classList.add('animate-in');
         } else {
-          // Keluar viewport — arah keluar sesuai scroll
           el.classList.remove('animate-in');
 
           if (scrollingDown) {
-            // Scroll ke bawah → elemen keluar ke atas
             el.classList.add('animate-out-up');
           } else {
-            // Scroll ke atas → elemen keluar ke bawah
             el.classList.add('animate-out-down');
           }
         }
@@ -394,6 +391,16 @@ const heroLeft  = document.querySelector('.hero-left');
     },
     { threshold: 0.15 }
   );
+
+  elements.forEach((el) => observer.observe(el));
+} else {
+  // Di mobile: paksa langsung terlihat, tanpa animasi, tanpa observer
+  elements.forEach((el) => {
+    el.style.opacity = '1';
+    el.style.transform = 'none';
+    el.style.animation = 'none';
+  });
+}
 
   elements.forEach((el) => observer.observe(el));
 
