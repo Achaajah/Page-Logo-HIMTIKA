@@ -3191,9 +3191,9 @@ margin-top: 30px;
 }
 
 /* ══════════════════════════════════
-   MOBILE — max 600px
+   MOBILE — max 768px
 ══════════════════════════════════ */
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   .filosofi-section {
     padding: 60px 20px 80px;
   }
@@ -3203,11 +3203,14 @@ margin-top: 30px;
     min-width: unset;
   }
 
-  .filosofi-section__scroll-text {
-    font-size: 13px;
-    line-height: 1.7;
-    width: 55%;
-  }
+.filosofi-section__scroll-text {
+  font-size: 13px;
+  line-height: 1.7;
+  width: 75%;           /* diperlebar dari 55% */
+  left: 50%;
+  transform: translate(-50%, -50px); /* center horizontal + naik dikit vertikal */
+  text-align: center;
+}
 
   .filosofi-section__items {
     gap: 8px;
