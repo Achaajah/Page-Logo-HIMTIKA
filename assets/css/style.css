@@ -1812,7 +1812,19 @@ li {
 
 /* ================= MOBILE ================= */
 @media (max-width: 768px) {
-
+.hero-left,
+  .hero-right,
+  .hero-left.animate-in,
+  .hero-right.animate-in,
+  .hero-left.animate-out-up,
+  .hero-right.animate-out-up,
+  .hero-left.animate-out-down,
+  .hero-right.animate-out-down {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+    transition: none !important;
+  }
   .hero-cont {
     flex-direction: column;
     text-align: center;
@@ -2479,7 +2491,6 @@ li {
   transform: scale(1.1);
 }
 
-
 .Logo-Section {
   position: relative;
   width: 100%;
@@ -2489,7 +2500,7 @@ li {
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 120px 40px 300px; /* top 120px hindari navbar, bottom 200px ruang awan */
+  padding: 120px 40px 300px;
   background: radial-gradient(
     ellipse 80% 65% at 50% 38%,
     #2b0e30 0%,
@@ -2554,9 +2565,6 @@ li {
   animation: none;
 }
 
-/* ══════════════════════════════════
-   LOGO
-══════════════════════════════════ */
 .Logo-Section__logo {
   position: relative;
   z-index: 2;
@@ -2572,7 +2580,6 @@ li {
     drop-shadow(0 0 6px #c0397a40)
     drop-shadow(0 0 18px #c0397a40)
     drop-shadow(0 0 35px #c0397a40);
-
   opacity: 0;
   transition:
     opacity 0.6s ease,
@@ -2598,9 +2605,6 @@ li {
   animation: none;
 }
 
-/* ══════════════════════════════════
-   JUDUL & DESKRIPSI
-══════════════════════════════════ */
 .Logo-Section__title,
 .Logo-Section__text {
   opacity: 0;
@@ -2628,9 +2632,6 @@ li {
   transform: translateY(16px);
 }
 
-/* ══════════════════════════════════
-   KEYFRAMES
-══════════════════════════════════ */
 @keyframes logoFocusIn {
   0% {
     filter: blur(14px);
@@ -2651,7 +2652,6 @@ li {
   }
 }
 
-/* ── JUDUL ── */
 .Logo-Section__title {
   position: relative;
   z-index: 2;
@@ -2683,11 +2683,10 @@ li {
     margin-top: -30px;
   }
   .Logo-Section__logo-img {
-margin-top: 30px;
+    margin-top: 30px;
   }
 }
 
-/* ── DESKRIPSI ── */
 .Logo-Section__text {
   position: relative;
   z-index: 2;

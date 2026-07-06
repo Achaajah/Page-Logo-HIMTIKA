@@ -11,58 +11,28 @@
 
   //Update Header Style and Scroll to Top
   function headerStyle() {
-    // if($('.main-header').length){
-    // 	var windowpos = $(window).scrollTop();
-    // 	var headerUpper = $('.header-upper');
-    // 	var headerTop = $('.header-top');
-    // 	var scrollLink = $('.scroll-to-top');
-
-    // 	// Cek jika scroll lebih dari 100px
-    // 	if (windowpos > 136) {
-    // 		// Menambahkan kelas sticky pada header-upper
-    // 		headerUpper.addClass('sticky');
-    // 		// Menyembunyikan header-top
-    // 		headerTop.fadeOut(300);
-    // 		// Menampilkan scroll-to-top
-    // 		scrollLink.fadeIn(1000);
-    // 	} else {
-    // 		// Menghapus kelas sticky pada header-upper
-    // 		headerUpper.removeClass('sticky');
-    // 		// Menampilkan kembali header-top
-    // 		headerTop.fadeIn(300);
-    // 		// Menyembunyikan scroll-to-top
-    // 		scrollLink.fadeOut(300);
-    // 	}
-    // }
     if ($(".main-header").length) {
       var scrollY = $(window).scrollTop();
       var header = $(".main-header");
-      var headerTop = $(".header-top"); // Marquee lo
+      var headerTop = $(".header-top");
 
       if (scrollY <= 400) {
-        // STATE: ATAS (Sticky/Absolute)
         header.removeClass("header-fixed").addClass("header-absolute");
         header.css({
           transform: "translateY(0)",
           opacity: "1",
         });
-        // Marquee tetap tampil di atas
-        // headerTop.show();
       } else if (scrollY > 400 && scrollY <= 550) {
-        // STATE: SEMBUNYI (Transisi kabur ke atas)
         header.css({
           transform: "translateY(-100px)",
           opacity: "0",
         });
       } else {
-        // STATE: BAWAH (Fixed Glassy)
         header.addClass("header-fixed").removeClass("header-absolute");
         header.css({
           transform: "translateY(0)",
           opacity: "1",
         });
-        // Marquee diumpetin pas lagi melayang biar ringkas
-        // headerTop.hide();
       }
     }
   }
@@ -72,10 +42,6 @@
   });
 
   headerStyle();
-
-  $(window).on("scroll", function () {
-    headerStyle();
-  });
 
   //Submenu Dropdown Toggle
   if ($(".main-header li.dropdown ul").length) {
@@ -92,17 +58,15 @@
     $(".mobile-menu .menu-box .menu-outer").append(mobileMenuContent);
     $(".sticky-header .main-menu").append(mobileMenuContent);
 
-    //Dropdown Button
     $(".mobile-menu li.dropdown .dropdown-btn").on("click", function () {
       $(this).toggleClass("open");
       $(this).prev("ul").slideToggle(500);
     });
-    //Menu Toggle Btn
+
     $(".mobile-nav-toggler").on("click", function () {
       $("body").addClass("mobile-menu-visible");
     });
 
-    //Menu Toggle Btn
     $(".mobile-menu .menu-backdrop,.mobile-menu .close-btn").on(
       "click",
       function () {
@@ -115,7 +79,6 @@
   if ($(".scroll-to-target").length) {
     $(".scroll-to-target").on("click", function () {
       var target = $(this).attr("data-target");
-      // animate
       $("html, body").animate(
         {
           scrollTop: $(target).offset().top,
@@ -136,7 +99,6 @@
     }
   });
 
-  // Fungsi Klik: Balik ke Atas
   $("#backToTop").on("click", function (e) {
     e.preventDefault();
     $("html, body").animate(
@@ -146,8 +108,6 @@
       0,
     );
   });
-
-  // Loading masuk page akan di gantikan dengan fungsi berikut
 
   $(window).on("load", function () {
     handlePreloader();
@@ -177,7 +137,6 @@
 
   const mod = (n, m) => ((n % m) + m) % m;
 
-  /* ── Layout ── */
   function update() {
     cards.forEach((container, i) => {
       container.classList.remove("active", "side", "far", "hidden", "is-left", "is-right");
@@ -201,7 +160,6 @@
     dots.forEach((dot, i) => dot.classList.toggle("active", i === current));
   }
 
-  /* ── Roll slide (pindah kartu) ── */
   function slide(direction) {
     if (isAnimating) return;
     isAnimating = true;
@@ -228,7 +186,6 @@
     }, 380);
   }
 
-  /* ── Klik kartu ── */
   cards.forEach((container, i) => {
     container.addEventListener("click", () => {
       if (container.classList.contains("active")) {
@@ -242,11 +199,9 @@
     });
   });
 
-  /* ── Nav ── */
   btnNext.addEventListener("click", () => slide("next"));
   btnPrev.addEventListener("click", () => slide("prev"));
 
-  /* ── Dots ── */
   dots.forEach((dot, i) => {
     dot.addEventListener("click", () => {
       if (i === current || isAnimating) return;
@@ -257,13 +212,11 @@
     });
   });
 
-  /* ── Keyboard ── */
   document.addEventListener("keydown", (e) => {
     if (e.key === "ArrowRight") slide("next");
     if (e.key === "ArrowLeft")  slide("prev");
   });
 
-  /* ── Mouse drag ── */
   let startX     = null;
   let isDragging = false;
 
@@ -282,7 +235,6 @@
     startX = null;
   });
 
-  /* ── Touch swipe ── */
   wrapper.addEventListener("touchstart", (e) => {
     startX = e.touches[0].clientX;
   }, { passive: true });
@@ -294,7 +246,6 @@
     startX = null;
   }, { passive: true });
 
-  /* ── Scroll entrance & exit ── */
   function getOrderedByPosition() {
     return [...cards].sort((a, b) =>
       a.getBoundingClientRect().left - b.getBoundingClientRect().left
@@ -307,7 +258,6 @@
 
     const ordered = getOrderedByPosition();
 
-    // sembunyikan semua dulu
     cards.forEach((c) => { c.style.opacity = "0"; });
 
     ordered.forEach((c, i) => {
@@ -354,64 +304,72 @@
     { threshold: 0.2 }
   );
 
-  /* ── Init ── */
   update();
   entranceObserver.observe(section);
 
 })();
-const heroLeft  = document.querySelector('.hero-left');
-const heroRight = document.querySelector('.hero-right');
-const elements  = [heroLeft, heroRight];
 
-let lastScrollY = window.scrollY;
 
-if (window.innerWidth > 768) {
-  const observer = new IntersectionObserver(
-    (entries) => {
-      const currentScrollY = window.scrollY;
-      const scrollingDown  = currentScrollY > lastScrollY;
-      lastScrollY = currentScrollY;
+/* ═══════════════════════════════════════════
+   HERO SCROLL ANIMATION
+═══════════════════════════════════════════ */
+(function () {
+  "use strict";
 
-      entries.forEach((entry) => {
-        const el = entry.target;
+  const heroLeft  = document.querySelector('.hero-left');
+  const heroRight = document.querySelector('.hero-right');
+  const elements  = [heroLeft, heroRight];
 
-        if (entry.isIntersecting) {
-          el.classList.remove('animate-out-down', 'animate-out-up');
-          el.classList.add('animate-in');
-        } else {
-          el.classList.remove('animate-in');
+  let lastScrollY = window.scrollY;
 
-          if (scrollingDown) {
-            el.classList.add('animate-out-up');
+  if (window.innerWidth > 768) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const currentScrollY = window.scrollY;
+        const scrollingDown  = currentScrollY > lastScrollY;
+        lastScrollY = currentScrollY;
+
+        entries.forEach((entry) => {
+          const el = entry.target;
+
+          if (entry.isIntersecting) {
+            el.classList.remove('animate-out-down', 'animate-out-up');
+            el.classList.add('animate-in');
           } else {
-            el.classList.add('animate-out-down');
+            el.classList.remove('animate-in');
+
+            if (scrollingDown) {
+              el.classList.add('animate-out-up');
+            } else {
+              el.classList.add('animate-out-down');
+            }
           }
-        }
-      });
-    },
-    { threshold: 0.15 }
-  );
+        });
+      },
+      { threshold: 0.15 }
+    );
 
-  elements.forEach((el) => observer.observe(el));
-} else {
-  // Di mobile: paksa langsung terlihat, tanpa animasi, tanpa observer
-  elements.forEach((el) => {
-    el.style.opacity = '1';
-    el.style.transform = 'none';
-    el.style.animation = 'none';
-  });
-}
+    elements.forEach((el) => observer.observe(el));
+  } else {
+    elements.forEach((el) => {
+      el.style.opacity = '1';
+      el.style.transform = 'none';
+      el.style.animation = 'none';
+    });
+  }
+})();
 
-  elements.forEach((el) => observer.observe(el));
 
-  (function () {
+/* ═══════════════════════════════════════════
+   LOGO-SECTION
+═══════════════════════════════════════════ */
+(function () {
   "use strict";
 
   const section = document.querySelector(".Logo-Section");
-  const logo    = section.querySelector(".Logo-Section__logo");
-
   if (!section) return;
 
+  const logo = section.querySelector(".Logo-Section__logo");
   let isVisible = false;
 
   const observer = new IntersectionObserver(
