@@ -3032,26 +3032,39 @@ li {
 
 /* ── LABEL ── */
 .filosofi-section__item-label {
+  position: relative; /* biar z-index aktif */
+  z-index: 5; /* bisa kamu naikin kalau ketiban elemen lain */
+
   display: inline-flex;
   align-items: center;
   justify-content: center;
+
   min-width: 200px;
   padding: 16px 40px;
+
   background: linear-gradient(
     93.74deg,
     rgba(255, 255, 255, 0.2) 20.42%,
     rgba(115, 115, 115, 0.2) 76.52%
   );
+
   border: none;
+
   font-family: "Playfair Display", serif;
   font-size: clamp(0.95rem, 1.7vw, 1.2rem);
-  font-weight: 500;
+  font-weight: 700; /* jadi bold */
   letter-spacing: 0.14em;
+
   border-radius: 8px;
   cursor: pointer;
-  transition: background 0.2s;
+
+  transition: all 0.3s ease;
+
+  /* turunin dikit */
+  transform: translateY(5px);
 }
 
+/* gradient text */
 .filosofi-section__item-label span {
   background: linear-gradient(
     180deg,
@@ -3065,12 +3078,15 @@ li {
   background-clip: text;
 }
 
+/* hover effect */
 .filosofi-section__item-label:hover {
   background: linear-gradient(
     93.74deg,
     rgba(255, 255, 255, 0.3) 20.42%,
     rgba(212, 160, 23, 0.2) 76.52%
   );
+
+  transform: translateY(0px); /* naik dikit pas hover */
 }
 
 /* ── KURSOR DEKORATIF ── */
@@ -3119,12 +3135,19 @@ li {
 
 .filosofi-popup {
   position: relative;
+  top: 40px; /* ⬅️ ini bikin turun dikit */
+
   width: min(480px, 90vw);
+
   background: linear-gradient(160deg, #2d1050 0%, #1a0830 100%);
   border: 1.5px solid rgba(212, 160, 23, 0.45);
   border-radius: 16px;
+
   padding: 36px 40px 32px;
+
   animation: popIn 0.22s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4); /* ⬅️ biar ngambang */
 }
 
 @keyframes popIn {
