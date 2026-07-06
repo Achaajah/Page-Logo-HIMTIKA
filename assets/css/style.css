@@ -2239,7 +2239,7 @@ li {
   position: absolute;
   bottom: -32px;
   left: 50%;
-  transform: translateX(-50%) rotateY(180deg);
+  transform: translateX(-50%);
   font-family: "Poppins", sans-serif;
   font-size: 11px;
   color: #f2cc8f;
@@ -3208,7 +3208,7 @@ li {
   line-height: 1.7;
   width: 75%;           /* diperlebar dari 55% */
   left: 50%;
-  transform: translate(-50%, -50px); /* center horizontal + naik dikit vertikal */
+  transform: translate(-49%, -41px); /* center horizontal + naik dikit vertikal */
   text-align: center;
 }
 
@@ -3245,11 +3245,11 @@ li {
 
   .filosofi-section__kursor--1 {
     top: 54%;
-    left: 51%;
+    left: 52%;
   }
   .filosofi-section__kursor--2 {
     top: 69%;
-    right: 5%;
+    right: 4%;
   }
   .filosofi-section__kursor--3 {
     top: 84%;
