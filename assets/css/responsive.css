@@ -200,10 +200,10 @@
     background-size: 164px auto;
     margin-left: 14px;
   }
-  .back-to-top {
-    bottom: 40px;
-    right: 30px;
-  }
+ .back-to-top {
+    bottom: 80px;   /* 20px + 45px (tombol HIMTIKA) + 15px jarak */
+    right: 22.5px;  /* tombol 40px, tengahnya sejajar tombol HIMTIKA */
+}
   .button {
     width: 40px;
     height: 40px;
@@ -243,11 +243,12 @@
   }
 }
 
-@media only screen and (max-width: 480px) {
-  .back-to-top {
-    bottom: 30px;
-    right: 20px;
-  }
+@media (max-width: 768px){
+    /* Button BackToHIMTIKA */
+    .Btn-parent {
+        bottom: 20px;
+        right: 20px;
+    }
 }
 
 /* ── LOGO SECTION ── */
